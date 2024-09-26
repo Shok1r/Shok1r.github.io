@@ -16,19 +16,39 @@ p {
   font-family: "Merriweather", serif;
   font-weight: 400;
   font-style: normal;
-  font-size: 20px;
+  font-size: 18px;
   margin: 0;
   color: antiquewhite;
 }
 
+audio {
+  width: 100%;
+}
+
 .main-content {
   margin: 50px auto;
-  padding: 40px;
-  background-color: rgba(36, 42, 38, .9);
-  box-shadow: 0 0 40px 30px rgba(27, 27, 29, .8);
+  max-width: 600px;
+}
 
+.text-blocks {
+  margin: 0 10px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  max-width: 600px;
+  gap: 40px;
+}
+
+.text-block {
+  padding: 25px;
+  background-color: rgba(36, 42, 38, .9);
+  box-shadow: 0 0 20px 20px rgba(27, 27, 29, .9);
+  border-radius: 5px;
+}
+
+.important {
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.telega {
+  margin: 0 auto;
 }
