@@ -1,0 +1,374 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: #eef0f6;
+  background: radial-gradient(circle at 30% 20%, #2b2f55, #14152a 70%);
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: center;
+  padding: 24px 16px;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+h1 {
+  margin: 0 0 20px;
+  text-align: center;
+  font-size: 28px;
+}
+
+h2 {
+  margin: 0 0 16px;
+  font-size: 20px;
+}
+
+h3 {
+  margin: 0;
+  font-size: 16px;
+}
+
+/* ---------- Колесо ---------- */
+
+.wheel-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.wheel-wrap {
+  position: relative;
+  width: min(640px, 92vw);
+  aspect-ratio: 1;
+}
+
+#wheel {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border-radius: 50%;
+  box-shadow: 0 0 0 8px #2a2d4d, 0 0 0 12px #e7b84a, 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.pointer {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 18px solid transparent;
+  border-right: 18px solid transparent;
+  border-top: 38px solid #e7b84a;
+  filter: drop-shadow(0 3px 3px rgba(0, 0, 0, 0.5));
+  z-index: 2;
+}
+
+.spin-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 92px;
+  height: 92px;
+  border-radius: 50%;
+  border: 5px solid #e7b84a;
+  background: #1d1f3a;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+  transition: transform 0.15s, background 0.15s;
+}
+
+.spin-btn:hover:not(:disabled) {
+  background: #2c2f57;
+  transform: translate(-50%, -50%) scale(1.06);
+}
+
+.spin-btn:disabled {
+  cursor: default;
+  opacity: 0.7;
+}
+
+/* ---------- Результат ---------- */
+
+.result {
+  margin-top: 28px;
+  padding: 16px 20px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  text-align: center;
+  min-width: 280px;
+  animation: pop 0.3s ease-out;
+}
+
+.result p {
+  margin: 0 0 12px;
+  font-size: 18px;
+}
+
+.result strong {
+  color: #ffd56b;
+  font-size: 22px;
+}
+
+.result-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.hidden {
+  display: none;
+}
+
+@keyframes pop {
+  from { transform: scale(0.85); opacity: 0; }
+  to   { transform: scale(1);    opacity: 1; }
+}
+
+/* ---------- Панель ---------- */
+
+.panel {
+  width: min(640px, 100%);
+  padding: 20px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+label {
+  font-size: 13px;
+  color: #b9bdd6;
+  margin-top: 6px;
+}
+
+.row {
+  display: flex;
+  gap: 8px;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid #44486e;
+  background: #1b1d36;
+  color: inherit;
+  font: inherit;
+}
+
+textarea {
+  resize: vertical;
+}
+
+input:focus,
+textarea:focus {
+  outline: 2px solid #e7b84a;
+  outline-offset: -1px;
+}
+
+.btn {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 8px;
+  background: #3a3e6b;
+  color: #fff;
+  font: inherit;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s;
+}
+
+.btn:hover:not(:disabled) {
+  background: #4a4f85;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.btn.primary {
+  background: #e7b84a;
+  color: #1b1d36;
+  font-weight: 600;
+}
+
+.btn.primary:hover:not(:disabled) {
+  background: #f2c95f;
+}
+
+.btn.danger {
+  background: #d9534f;
+}
+
+.btn.danger:hover:not(:disabled) {
+  background: #e4655f;
+}
+
+.btn.small {
+  padding: 4px 10px;
+  font-size: 13px;
+}
+
+.list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 14px;
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 260px;
+  overflow-y: auto;
+}
+
+.list li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 4px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.list .swatch {
+  flex: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+}
+
+.list .name {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.list .del {
+  flex: none;
+  border: none;
+  background: none;
+  color: #9a9fc2;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.list .del:hover:not(:disabled) {
+  color: #ff7a75;
+}
+
+.list .empty {
+  color: #8a8fb3;
+  justify-content: center;
+  border: none;
+}
+
+.presets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.section-gap {
+  margin-top: 18px;
+}
+
+/* ---------- Раскрывающийся блок настроек ---------- */
+
+.settings summary {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+}
+
+.settings summary::-webkit-details-marker {
+  display: none;
+}
+
+.settings summary::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid #e7b84a;
+  border-bottom: 2px solid #e7b84a;
+  transform: rotate(-45deg);
+  transition: transform 0.2s;
+}
+
+.settings[open] summary::before {
+  transform: rotate(45deg);
+}
+
+.settings summary:hover {
+  color: #ffd56b;
+}
+
+.settings-body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 4px;
+}
+
+/* ---------- Описание и SEO-блоки ---------- */
+
+.subtitle {
+  margin: -12px 0 20px;
+  color: #b9bdd6;
+  text-align: center;
+}
+
+.noscript {
+  margin-top: 16px;
+  color: #ffd56b;
+}
+
+.about {
+  color: #c9cce0;
+  line-height: 1.55;
+}
+
+.about h2 {
+  margin: 12px 0 4px;
+  font-size: 18px;
+  color: #eef0f6;
+}
+
+.about h2:first-child {
+  margin-top: 0;
+}
+
+.about p,
+.about ol {
+  margin: 0;
+}
+
+.about ol {
+  padding-left: 20px;
+}

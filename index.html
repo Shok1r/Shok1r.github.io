@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Основное SEO -->
+  <title>Колесо фортуны онлайн — крутить колесо с секторами бесплатно</title>
+  <meta name="description" content="Бесплатное онлайн колесо фортуны: задайте свои секторы, крутите колесо и удаляйте выпавшие варианты. Готовая конфигурация для игры «Что? Где? Когда?» с чёрным ящиком.">
+  <meta name="keywords" content="колесо фортуны, колесо фортуны онлайн, крутить колесо, рулетка онлайн, случайный выбор, жеребьёвка, что где когда, черный ящик">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://shok1r.github.io/">
+
+  <!-- Open Graph / соцсети -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:site_name" content="Колесо фортуны">
+  <meta property="og:title" content="Колесо фортуны онлайн — крутить колесо с секторами">
+  <meta property="og:description" content="Задайте свои секторы, крутите колесо и удаляйте выпавшие варианты. Есть режим «Что? Где? Когда?».">
+  <meta property="og:url" content="https://shok1r.github.io/">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Колесо фортуны онлайн">
+  <meta name="twitter:description" content="Задайте свои секторы, крутите колесо и удаляйте выпавшие варианты.">
+
+  <!-- Внешний вид -->
+  <meta name="theme-color" content="#14152a">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+  <!-- Структурированные данные -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Колесо фортуны онлайн",
+    "url": "https://shok1r.github.io/",
+    "description": "Онлайн колесо фортуны с настраиваемыми секторами, удалением выпавших вариантов и режимом «Что? Где? Когда?».",
+    "applicationCategory": "GameApplication",
+    "operatingSystem": "Any",
+    "inLanguage": "ru",
+    "isAccessibleForFree": true,
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "RUB" }
+  }
+  </script>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <section class="wheel-area" aria-labelledby="title">
+      <h1 id="title">Колесо фортуны</h1>
+      <p class="subtitle">Задайте секторы, крутите колесо и убирайте выпавшие варианты</p>
+
+      <div class="wheel-wrap">
+        <div class="pointer" aria-hidden="true"></div>
+        <canvas id="wheel" role="img" aria-label="Колесо фортуны с секторами"></canvas>
+        <button id="spinBtn" class="spin-btn">Крутить</button>
+      </div>
+
+      <noscript>
+        <p class="noscript">Для работы колеса фортуны включите JavaScript в браузере.</p>
+      </noscript>
+
+      <div id="result" class="result hidden" aria-live="polite">
+        <p>Выпало: <strong id="resultText"></strong></p>
+        <div class="result-actions">
+          <button id="removeBtn" class="btn danger">Удалить из колеса</button>
+          <button id="keepBtn" class="btn">Оставить</button>
+        </div>
+      </div>
+    </section>
+
+    <aside class="panel">
+      <h2>Готовые конфигурации</h2>
+      <div class="presets">
+        <button id="presetChgk" class="btn">Что? Где? Когда?</button>
+      </div>
+
+      <details class="settings section-gap">
+        <summary>Настройка секторов</summary>
+
+        <div class="settings-body">
+          <label for="countInput">Количество секторов</label>
+          <div class="row">
+            <input type="number" id="countInput" min="1" max="100" value="8">
+            <button id="genBtn" class="btn">Создать</button>
+          </div>
+
+          <label for="namesInput">Или впишите названия (по одному в строке)</label>
+          <textarea id="namesInput" rows="7" placeholder="Приз 1&#10;Приз 2&#10;Приз 3"></textarea>
+          <button id="applyBtn" class="btn primary">Применить названия</button>
+
+          <div class="list-header">
+            <h3>В колесе: <span id="count">0</span></h3>
+            <button id="resetBtn" class="btn small">Вернуть удалённые</button>
+          </div>
+          <ul id="list" class="list"></ul>
+        </div>
+      </details>
+    </aside>
+
+    <section class="about panel">
+      <h2>Как пользоваться колесом фортуны</h2>
+      <ol>
+        <li>Выберите готовую конфигурацию или откройте «Настройка секторов» и задайте количество секторов либо впишите свои названия.</li>
+        <li>Нажмите «Крутить» в центре колеса или клавишу пробел.</li>
+        <li>После остановки колеса выпавший сектор можно удалить, чтобы он не выпал повторно, или оставить.</li>
+        <li>Кнопка «Вернуть удалённые» восстанавливает исходный набор секторов.</li>
+      </ol>
+
+      <h2>Колесо для игры «Что? Где? Когда?»</h2>
+      <p>Готовая конфигурация содержит 11 секторов с вопросами и сектор «Черный ящик». Сыгранные вопросы удаляются из колеса, поэтому каждый вопрос выпадет только один раз.</p>
+
+      <h2>Для чего подходит</h2>
+      <p>Случайный выбор победителя, жеребьёвка, распределение очерёдности, розыгрыши призов, викторины и квизы. Настройки сохраняются в браузере, регистрация не нужна.</p>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
