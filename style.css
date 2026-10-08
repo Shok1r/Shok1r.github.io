@@ -372,3 +372,15 @@ textarea:focus {
 .about ol {
   padding-left: 20px;
 }
+
+.btn.outline {
+  background: transparent;
+  color: #e7b84a;
+  box-shadow: inset 0 0 0 2px #e7b84a;
+  font-weight: 600;
+}
+
+.btn.outline:hover:not(:disabled) {
+  background: #e7b84a;
+  color: #1b1d36;
+}

@@ -14,6 +14,7 @@ const resultText = document.getElementById('resultText');
 const removeBtn = document.getElementById('removeBtn');
 const keepBtn = document.getElementById('keepBtn');
 const titleEl = document.getElementById('title');
+const presetDefaultBtn = document.getElementById('presetDefault');
 const presetChgkBtn = document.getElementById('presetChgk');
 
 const STORAGE_KEY = 'wheel-of-fortune';
@@ -25,6 +26,10 @@ const BLACK_BOX = 'Черный ящик';
 
 // Готовые конфигурации
 const PRESETS = {
+  default: {
+    title: DEFAULT_TITLE,
+    sectors: Array.from({ length: 8 }, (_, i) => String(i + 1)),
+  },
   chgk: {
     title: 'Что? Где? Когда?',
     sectors: [
@@ -247,7 +252,7 @@ function getWinnerIndex() {
 }
 
 function setControlsDisabled(disabled) {
-  [genBtn, applyBtn, countInput, namesInput, presetChgkBtn].forEach(el => (el.disabled = disabled));
+  [genBtn, applyBtn, countInput, namesInput, presetDefaultBtn, presetChgkBtn].forEach(el => (el.disabled = disabled));
 }
 
 function spin() {
@@ -288,6 +293,7 @@ function spin() {
 
 spinBtn.addEventListener('click', spin);
 
+presetDefaultBtn.addEventListener('click', () => applyPreset(PRESETS.default));
 presetChgkBtn.addEventListener('click', () => applyPreset(PRESETS.chgk));
 
 genBtn.addEventListener('click', () => {
@@ -346,7 +352,6 @@ if (load()) {
   renderTitle();
   renderList();
 } else {
-  setSectors(['1', '2', '3', '4', '5', '6', '7', '8']);
-  namesInput.value = original.join('\n');
+  applyPreset(PRESETS.default);
 }
 resizeCanvas();
